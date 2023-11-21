@@ -18,5 +18,7 @@ public interface IEquiposDAO {
 
     public List<Equipo> getEquipoAlumnos();
 
+    public List<Equipo> getEquipoSinAlumnos();
+
     public void closeConnection();
 }

@@ -20,13 +20,11 @@
             <h1>Información sobre los Equipos existentes</h1>
                 <table>
                     <tr>
-                        <th>idEquipo</th>
                         <th>Marca</th>
                         <th>Numero de Serie</th>
                     <tr>
                     <c:forEach var="equipo" items="${equipos}">
                         <tr>
-                            <td>${equipo.idEquipo}</td>
                             <td>${equipo.marca}</td>
                             <td>${equipo.numSerie}</td>
                         </tr>

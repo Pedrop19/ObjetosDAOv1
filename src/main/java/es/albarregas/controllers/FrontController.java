@@ -73,28 +73,24 @@ public class FrontController extends HttpServlet {
                 break;
             case "alumnosEquipos":
                 alumnos = alumnosDAO.getAlumnoEquipo();
-                equipos = new ArrayList<>();
                 for (Alumno alumno : alumnos) {
-                    equipos.add(alumno.getEquipo());
+                    Equipo equipo = alumno.getEquipo();
+                    if(equipo.getNumSerie() == null){
+                        equipo.setNumSerie("Sin equipo");
+                    }
                 }
                 request.setAttribute("alumnos", alumnos);
-                request.setAttribute("equipos", equipos);
                 url = "JSP/vistaFinalAlumnoEquipos.jsp";
                 break;
             case "equiposAlumnos":
                 equipos = equiposDAO.getEquipoAlumnos();
-                List<Alumno> todosLosAlumnos = new ArrayList<>();
-
-                for (Equipo equipo : equipos) {
-                    List<Alumno> alumnosDelEquipo = equipo.getAlumnos();
-                    if (alumnosDelEquipo != null && !alumnosDelEquipo.isEmpty()) {
-                        todosLosAlumnos.addAll(alumnosDelEquipo);
-                    }
-                }
-
                 request.setAttribute("equipos", equipos);
-                request.setAttribute("alumnos", todosLosAlumnos);
                 url = "JSP/vistaFinalEquipoAlumno.jsp";
+                break;
+            case "equiposSinAlumnos":
+                equipos = equiposDAO.getEquipos();
+                request.setAttribute("equipos", equipos);
+                url= "JSP/vistaFinalEquipoSinAlumno.jsp";
                 break;
         }
         request.getRequestDispatcher(url).forward(request, response);

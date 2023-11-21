@@ -20,13 +20,11 @@
             <h1>Información sobre los alumnos existentes</h1>
                 <table>
                     <tr>
-                        <th>idAlumno</th>
                         <th>Nombre</th>
                         <th>Grupo</th>
                     <tr>
                     <c:forEach var="alumno" items="${alumnos}">
                         <tr>
-                            <td>${alumno.idAlumno}</td>
                             <td>${alumno.nombre}</td>
                             <td>${alumno.grupo}</td>
                         </tr>

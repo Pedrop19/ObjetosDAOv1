@@ -4,6 +4,7 @@
     Author     : pedro
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
 <!DOCTYPE html>
 <html lang="es">
@@ -20,31 +21,18 @@
             <h1>Información sobre los equipos existentes y sus alumnos</h1>
                 <table>
                     <tr>
-                        <th>idEquipo</th>
                         <th>Marca</th>
-                        <th>Numero de Serie</th>
-                    <tr>
-                    <c:forEach var="equipo" items="${equipos}">
-                        <tr>
-                            <td>${equipo.idEquipo}</td>
-                            <td>${equipo.marca}</td>
-                            <td>${equipo.numSerie}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
-                <table>
-                    <tr>
-                        <th>idAlumno</th>
                         <th>Nombre</th>
                         <th>Grupo</th>
-                        <th>idEquipo</th>
                     <tr>
-                    <c:forEach var="alumno" items="${alumnos}">
+                    <c:forEach var="equipo" items="${equipos}">
+                    <c:set var="numAlumnos" value="${fn:length(equipo.alumnos)}" />
                         <tr>
-                            <td>${alumno.idAlumno}</td>
-                            <td>${alumno.nombre}</td>
-                            <td>${alumno.grupo}</td>
-                            <td>${alumno.equipo.idEquipo}</td>
+                            <td rowspan="${numAlumnos}">${equipo.marca}</td>
+                            <c:forEach var="alumno" items="${equipo.alumnos}">
+                                <td>${alumno.nombre}</td>
+                                <td>${alumno.grupo}</td>
+                            </c:forEach>
                         </tr>
                     </c:forEach>
                 </table>

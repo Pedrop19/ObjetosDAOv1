@@ -1,5 +1,5 @@
 <%-- 
-    Document   : VistaFinalAlumnoEquipos
+    Document   : vistaFinalEquipoSinAlumno
     Created on : 16 nov. 2023, 23:19:14
     Author     : pedro
 --%>
@@ -12,23 +12,21 @@
         <jsp:directive.include file="/INC/metas.inc"/>
         <link rel="shortcut icon" href="IMG/bbdd.png" type="image/x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Ver Alumnos y Equipos</title>
+        <title>Ver Equipos</title>
         <link rel="stylesheet" href="CSS/style.css">
     </head>
     <body>
         <div class="table-container">
-            <h1>Información sobre los alumnos existentes y los equipos asociados</h1>
+            <h1>Información sobre los Equipos existentes</h1>
                 <table>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Grupo</th>
-                        <th>N&uacute;mero Serie Equipo</th>
+                        <th>Marca</th>
+                        <th>Numero de Serie</th>
                     <tr>
-                    <c:forEach var="alumno" items="${alumnos}">
+                    <c:forEach var="equipo" items="${equipos}">
                         <tr>
-                            <td>${alumno.nombre}</td>
-                            <td>${alumno.grupo}</td>
-                            <td>${alumno.equipo.numSerie}</td>
+                            <td>${equipo.marca}</td>
+                            <td>${equipo.numSerie}</td>
                         </tr>
                     </c:forEach>
                 </table>
@@ -38,4 +36,3 @@
             </div>
     </body>
 </html>
-
